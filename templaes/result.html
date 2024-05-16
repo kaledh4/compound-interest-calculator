@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Investment Projection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Projection for {{ total_days }} days</h1>
+    <p>Investment value: {{ investment_value }}</p>
+    <p>Total interest / earnings: {{ total_interest }}</p>
+    <p>Additional deposits: {{ additional_deposits }}</p>
+    <p>Percentage profit: {{ percentage_profit }}</p>
+    <p>Total cash taken out: {{ total_cash_taken_out }}</p>
+    <p>Total days / Business days: {{ total_days }} / {{ business_days }}</p>
+    <p>Days excluded: Fri. Sat.</p>
+    <p>Daily interest rate: {{ daily_interest_rate }}</p>
+    <p>End date: {{ end_date }}</p>
+    <p>Initial balance on {{ start_date }}: {{ initial_balance }}</p>
+    
+    <h2>Earnings Breakdown</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Balance</th>
+                <th>Daily Interest</th>
+                <th>Reinvested Amount</th>
+                <th>Drawdown Amount</th>
+                <th>Personal Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in earnings_data %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="{{ url_for('download_csv', filename=csv_filename, csv_content=csv_content) }}" class="download-button">Download CSV</a>
+</body>
+</html>

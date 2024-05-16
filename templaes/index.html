@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Investment Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"], select {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Investment Calculator</h1>
+    <form method="post">
+        <label>Initial Balance:</label>
+        <input type="number" name="initial_balance" required><br>
+        
+        <label>Currency:</label>
+        <select name="currency">
+            <option value="$">$</option>
+            <option value="SAR">SAR</option>
+        </select><br>
+        
+        <label>Interest Rate (%):</label>
+        <input type="number" name="interest_rate" min="0" max="10" step="0.01" required><br>
+        
+        <label>Days:</label>
+        <input type="number" name="days" min="0" required><br>
+        
+        <label>Months:</label>
+        <input type="number" name="months" min="0" required><br>
+        
+        <label>Years:</label>
+        <input type="number" name="years" min="0" required><br>
+        
+        <label>Include All Days of Week?</label>
+        <input type="checkbox" name="include_all_days"><br>
+        
+        <label>Daily Reinvest Rate (%):</label>
+        <input type="number" name="daily_reinvest_rate" min="0" max="100" step="0.01" required><br>
+        
+        <label>Additional Contributions:</label>
+        <select name="additional_contributions">
+            <option value="None">None</option>
+            <option value="Deposits">Deposits</option>
+            <option value="Withdrawals">Withdrawals</option>
+        </select><br>
+        
+        <label>Additional Contribution Amount:</label>
+        <input type="number" name="additional_contribution_amount" min="0" step="0.01" value="0"><br>
+        
+        <label>Skip Additional Contributions for (Days):</label>
+        <input type="number" name="additional_contribution_skip_days" min="0" value="0"><br>
+        
+        <label>Drawdown Percentage (%):</label>
+        <input type="number" name="drawdown_percentage" min="0" max="100" step="0.01" required><br>
+        
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
